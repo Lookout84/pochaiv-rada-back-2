@@ -1,0 +1,48 @@
+{
+  "name": "pochaiv-rada-back-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-query-boolean": "^2.0.0",
+    "express-rate-limit": "^6.8.0",
+    "gravatar": "^1.8.2",
+    "helmet": "^7.0.0",
+    "joi": "^17.9.2",
+    "jsonwebtoken": "^9.0.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.5.2",
+    "nodemon": "^3.0.1",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "sequelize": "^6.32.1",
+    "sqlite3": "^5.1.6",
+    "uuid": "^9.0.0",
+    "validator": "^13.9.0"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node ./bin/server.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon ./bin/server.js",
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint --fix **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lookout84/pochaiv-rada-back-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lookout84/pochaiv-rada-back-2/issues"
+  },
+  "homepage": "https://github.com/Lookout84/pochaiv-rada-back-2#readme",
+  "devDependencies": {
+    "sequelize-cli": "^6.6.1"
+  }
+}

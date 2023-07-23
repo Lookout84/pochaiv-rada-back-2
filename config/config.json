@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "lookout",
+    "password": "TLNo{tvujyH6",
+    "database": "pochaiv_rada",
+    "host": "127.0.0.1",
+    "port": "2584",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "lookout",
+    "password": "TLNo{tvujyH6",
+    "database": "pochaiv_rada",
+    "host": "127.0.0.1",
+    "port": "2584",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "lookout",
+    "password": "TLNo{tvujyH6",
+    "database": "pochaiv_rada",
+    "host": "127.0.0.1",
+    "port": "2584",
+    "dialect": "mysql"
+  }
+}
