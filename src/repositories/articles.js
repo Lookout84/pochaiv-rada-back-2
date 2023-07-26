@@ -1,5 +1,5 @@
-const { Article, User, Role } = require('../../models')
-const { query } = require('express')
+const { Article, User, Role } = require("../../models");
+const { query } = require("express");
 
 const getAll = async (userId, query) => {
   const {
@@ -9,71 +9,70 @@ const getAll = async (userId, query) => {
     favorited = null,
     limit = 10,
     offset = 0,
-  } = query
+  } = query;
   const options = {
     offset,
     limit,
     where: {
       author: userId,
-      ...(favorited !== null ? { isFavorite: favorited } : {})
+      ...(favorited !== null ? { isFavorite: favorited } : {}),
     },
     include: [
       {
-        model: User, attributes: ['id', 'name', 'email', 'role'],
-        include: { model: Role, attributes: ['value'] }
+        model: User,
+        attributes: ["id", "name", "email", "role"],
+        include: { model: Role, attributes: ["value"] },
       },
     ],
-  }
-  const order = []
+  };
+  const order = [];
   if (sortBy) {
-    order.push([`${sortBy}`])
-    options.order = order
+    order.push([`${sortBy}`]);
+    options.order = order;
   }
   if (sortByDesc) {
-    order.push([`${sortByDesc}`, 'DESC'])
-    options.order = order
+    order.push([`${sortByDesc}`, "DESC"]);
+    options.order = order;
   }
   if (filter) {
-    const attributes = filter.split('|')
-    options.attributes = attributes
+    const attributes = filter.split("|");
+    options.attributes = attributes;
   }
-  const { count, rows } = await Article.findAndCountAll(options)
-  return { articles: rows, total: count, limit, offset }
-}
+  const { count, rows } = await Article.findAndCountAll(options);
+  return { articles: rows, total: count, limit, offset };
+};
 
 const getAllArticles = async () => {
-  const result = await Article.find()
-  return result
-}
+  const result = await Article.find();
+  return result;
+};
 
 const getById = async (userId, id) => {
-  const result = await Article.findOne({ where: id, author: userId })
-  return result
-}
+  const result = await Article.findOne({ where: id, author: userId });
+  return result;
+};
 
 const remove = async (userId, id) => {
-  const article = await Article.findOne({ where: id, author: userId })
+  const article = await Article.findOne({ where: id, author: userId });
   if (article) {
-    await Article.destroy({ where: id, author: userId })
-    return article
+    await Article.destroy({ where: id, author: userId });
+    return article;
   }
-  return null
-}
+  return null;
+};
 
 const addArticle = async (userId, body) => {
-  const result = await Article.create(
-    {
-      author: userId,
-      ...body
-    })
-  return result
-}
+  const result = await Article.create({
+    author: userId,
+    ...body,
+  });
+  return result;
+};
 
 const update = async (userId, id, body) => {
-  await Article.update(body, { where: id, author: userId })
-  return await getById(userId, id)
-}
-
+  await Article.update(body, { where: id, author: userId });
+  return await getById(userId, id);
+};
 
 module.exports = {
   getAll,
@@ -82,4 +81,4 @@ module.exports = {
   addArticle,
   update,
   getAllArticles,
-}
+};
