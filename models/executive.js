@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Executive.belongsTo(models.Author, {
+      Executive.hasMany(models.Author, {
         foreignKey: 'author',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       })
-      Executive.belongsTo(models.Variation, {
+      Executive.hasMany(models.Variation, {
         foreignKey: 'variation',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'

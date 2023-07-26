@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Session.belongsTo(models.Author, {
+      Session.hasMany(models.Author, {
         foreignKey: 'author',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       })
-      Session.belongsTo(models.Variation, {
+      Session.hasMany(models.Variation, {
         foreignKey: 'variation',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
