@@ -1,10 +1,10 @@
 const { Session, Author, Variation } = require("../../models");
 const { query } = require("express");
 
-// const getAllSessions = async () => {
-//   const result = await Session.find();
-//   return result;
-// };
+const getAll = async () => {
+  const result = await Session.find();
+  return result;
+};
 
 const getAllSessions = async (userId, query) => {
   const {
@@ -65,8 +65,9 @@ const remove = async (id) => {
 };
 
 const addSession = async (body) => {
+  console.log(userId);
   const result = await Session.create({
-    owner: userId,
+    author: userId,
     ...body,
   });
   return result;
@@ -78,6 +79,7 @@ const update = async (id, body) => {
 };
 
 module.exports = {
+  getAll,
   getAllSessions,
   getById,
   remove,

@@ -4,7 +4,7 @@ const { HttpCode } = require("../helpers/constants");
 const getAll = async (req, res, next) => {
   try {
     const userId = req.user.id;
-    const { sessions, total, limit, offset } = await Session.getAll(
+    const { sessions, total, limit, offset } = await Session.getAllSessions(
       userId,
       req.query
     );
