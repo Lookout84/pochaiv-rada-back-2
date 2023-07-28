@@ -7,29 +7,23 @@ const getAll = async () => {
 };
 
 const getAllSessions = async (userId, query) => {
-  const {
-    sortBy,
-    sortByDesc,
-    filter,
-    limit = 10,
-    offset = 0,
-  } = query;
+  const { sortBy, sortByDesc, filter, limit = 10, offset = 0 } = query;
   const options = {
     offset,
     limit,
     where: {
       author: userId,
     },
-    include: [
-      {
-        model: Author,
-        attributes: ["id", "name"],
-      },
-      {
-        model: Variation,
-        attributes: ["value"],
-      },
-    ],
+    // include: [
+    //   {
+    //     model: Author,
+    //     attributes: ["id", "name"],
+    //   },
+    //   {
+    //     model: Variation,
+    //     attributes: ["value"],
+    //   },
+    // ],
   };
   const order = [];
   if (sortBy) {
