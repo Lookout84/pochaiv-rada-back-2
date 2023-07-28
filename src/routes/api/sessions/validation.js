@@ -3,8 +3,8 @@ const Joi = require("joi");
 const schemaCreateSession = Joi.object({
   title: Joi.string().min(3).max(30).required(),
   text: Joi.string().min(3).required(),
-  author: Joi.string().min(3).max(30).required(),
-  variation: Joi.string().min(3).max(30).required(),
+  author: Joi.number(),
+  variation: Joi.number(),
   date: Joi.date(),
   numberSession: Joi.number(),
   file: Joi.string().min(3).max(100).required(),
@@ -15,6 +15,7 @@ const schemaUpdateSession = Joi.object({
   title: Joi.string().min(3).max(30).required(),
   text: Joi.string().min(3).required(),
   author: Joi.string().min(3).max(30).required(),
+  variation: Joi.number(),
   date: Joi.date(),
   numberSession: Joi.number(),
   file: Joi.string().min(3).max(100).required(),

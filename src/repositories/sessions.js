@@ -11,7 +11,6 @@ const getAllSessions = async (userId, query) => {
     sortBy,
     sortByDesc,
     filter,
-    favorited = null,
     limit = 10,
     offset = 0,
   } = query;
@@ -20,7 +19,6 @@ const getAllSessions = async (userId, query) => {
     limit,
     where: {
       author: userId,
-      ...(favorited !== null ? { isFavorite: favorited } : {}),
     },
     include: [
       {
@@ -29,7 +27,7 @@ const getAllSessions = async (userId, query) => {
       },
       {
         model: Variation,
-        attributes: ["id", "value"],
+        attributes: ["value"],
       },
     ],
   };
@@ -64,8 +62,7 @@ const remove = async (id) => {
   return null;
 };
 
-const addSession = async (body) => {
-  console.log(userId);
+const addSession = async (userId, body) => {
   const result = await Session.create({
     author: userId,
     ...body,
